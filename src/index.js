@@ -1,7 +1,7 @@
 import { Application } from "stimulus"
 import { definitionsFromContext } from "stimulus/webpack-helpers"
 
-export default class Skrw {
+class Skrw {
 
   start() {
     console.log("start Skrw application")
@@ -11,3 +11,5 @@ export default class Skrw {
     application.load(definitionsFromContext(context))
   }
 }
+
+export default Skrw
