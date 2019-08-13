@@ -1,0 +1,27 @@
+{
+  "name": "@swrs/skrw-js",
+  "version": "1.0.0",
+  "description": "js library for skrw rails engine",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --mode development --watch",
+    "build": "webpack --mode production"
+  },
+  "author": "swrs",
+  "license": "ISC",
+  "peerDependencies": {
+    "stimulus": "^1.1.1"
+  },
+  "dependencies": {
+    "@yaireo/tagify": "^2.23.1",
+    "autosize": "^4.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6"
+  }
+}
