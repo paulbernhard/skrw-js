@@ -5,7 +5,7 @@ module.exports = {
   output: {
     filename: "index.js",
     path: path.resolve(__dirname, "dist"),
-    library: "skrw-js",
+    library: "@swrs/skrw-js",
     libraryTarget: "umd"
   },
   module: {
