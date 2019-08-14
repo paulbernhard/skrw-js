@@ -1,11 +1,12 @@
 {
   "name": "@swrs/skrw-js",
-  "version": "1.0.8",
+  "version": "1.0.10",
   "description": "js library for skrw rails engine",
   "main": "./dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --mode development --watch",
+    "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "prepublish": "webpack --mode production"
   },
@@ -15,6 +16,7 @@
     "stimulus": "^1.1.1"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.4.4",
     "@yaireo/tagify": "^2.23.1",
     "autosize": "^4.0.2"
   },

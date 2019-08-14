@@ -6,7 +6,7 @@ module.exports = {
     filename: "index.js",
     path: path.resolve(__dirname, "dist"),
     library: "@swrs/skrw-js",
-    libraryTarget: "commonjs2"
+    libraryTarget: "umd"
   },
   module: {
     rules: [
@@ -14,11 +14,10 @@ module.exports = {
     ]
   },
   externals: {
-    // stimulus: {
-    //   commonjs: "stimulus",
-    //   commonjs2: "stimulus",
-    //   amd: "stimulus"
-    // }
-    stimulus: "stimulus"
+    stimulus: {
+      commonjs: "stimulus",
+      commonjs2: "stimulus",
+      amd: "stimulus"
+    }
   }
 }
