@@ -1,6 +1,6 @@
 {
   "name": "@swrs/skrw-js",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "js library for skrw rails engine",
   "main": "./src/index.js",
   "scripts": {
