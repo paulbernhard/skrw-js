@@ -1,0 +1,47 @@
+.skrw-list {
+  padding: 0;
+  list-style-type: none;
+
+  li, .skrw-list__item {
+    position: relative;
+    padding-left: .75em;
+    margin-bottom: 0;
+
+    &:before {
+      content: "*";
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    &:after {
+      content: "--------";
+    }
+
+    p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  &--lines li {
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: -.5 * $line-height;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: $font-color;
+    }
+
+    &:last-child:after {
+      display: none;
+    }
+  }
+
+  &[data-controller="skrw-sortable"] li {
+    cursor: move;
+  }
+}

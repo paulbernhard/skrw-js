@@ -1,0 +1,21 @@
+.skrw {
+  box-sizing: border-box;
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+}
+
+.skrw-page {
+  padding: $unit (3 * $unit);
+}
+
+.skrw-inline {
+  > * {
+    display: inline;
+    vertical-align: top;
+    margin-right: 3 * $unit;
+
+    &:last-child { margin-right: 0; }
+  }
+}

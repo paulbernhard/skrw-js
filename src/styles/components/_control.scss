@@ -1,0 +1,22 @@
+.skrw-controls {
+  @include bracket("(", ")");
+  @extend .skrw-inline;
+
+  > * {
+    @extend .skrw-control;
+  }
+}
+
+.skrw-control {
+  
+  color: $control-color;
+  text-decoration: none;
+  padding: .05em .15em;
+
+  &:visited { color: $control-color; }
+
+  &:hover {
+    cursor: pointer;
+    color: $control-hover-color;
+  }
+}

@@ -1,0 +1,72 @@
+$input-padding: .25em;
+
+.skrw {
+
+  .skrw-form--small {
+    max-width: 600px;
+  }
+
+  *:focus { outline: none; }
+
+  label, input, textarea, select {
+    display: block;
+    width: 100%;
+  }
+
+  label {
+    margin-top: .5 * $line-height;
+  }
+
+  &__input {
+    border: 1px solid black;
+    background: white;
+    padding: $input-padding;
+  }
+
+  input, textarea, select {
+    font-family: inherit;
+    @include type-setting(1);
+    margin-bottom: .5 * $line-height;
+    @extend .skrw__input;
+  }
+
+  textarea {
+    @include type-setting(1);
+    min-height: (2 * $line-height) + (2 * $input-padding);
+    resize: vertical;
+  }
+
+  input[type="checkbox"] {
+    display: block;
+    position: relative;
+    width: $line-height;
+    height: $line-height;
+    @include prefix((appearance: none), webkit moz o);
+    cursor: pointer;
+
+    &:hover, &:checked { background: yellow; }
+
+    &:checked:before {
+      content: "\2713";
+      position: absolute;
+      top: -.2em;
+      left: 0;
+      font-size: 1.7em;
+      line-height: 1em;
+    }
+  }
+
+  select {
+    cursor: pointer;
+  }
+
+  input[type="submit"],
+  &__control {
+    @extend .skrw__input;
+    @extend .skrw-control;
+    @include type-setting(1.25);
+    margin: $line-height 0;
+
+    &:hover { background: yellow; }
+  }
+}
