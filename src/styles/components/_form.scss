@@ -1,12 +1,9 @@
-$input-padding: .25em;
+$input-padding: .15em;
 
-.skrw {
-
-  .skrw-form--small {
-    max-width: 600px;
-  }
-
-  *:focus { outline: none; }
+.skrw form {
+  font-family: $font-family;
+  font-size: $font-size;
+  line-height: $line-height;
 
   label, input, textarea, select {
     display: block;
@@ -17,34 +14,38 @@ $input-padding: .25em;
     margin-top: .5 * $line-height;
   }
 
-  &__input {
-    border: 1px solid black;
+  .skrw-form__input {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
     background: white;
+    border: 1px solid black;
     padding: $input-padding;
   }
 
-  input, textarea, select {
-    font-family: inherit;
-    @include type-setting(1);
+  input:not([type="submit"]), textarea, select {
+    @extend .skrw-form__input;
     margin-bottom: .5 * $line-height;
-    @extend .skrw__input;
   }
 
   textarea {
-    @include type-setting(1);
     min-height: (2 * $line-height) + (2 * $input-padding);
     resize: vertical;
   }
 
   input[type="checkbox"] {
+    @include prefix((appearance: none), webkit moz o);
     display: block;
     position: relative;
     width: $line-height;
     height: $line-height;
-    @include prefix((appearance: none), webkit moz o);
+    margin-left: 0;
+    margin-right: 0;
     cursor: pointer;
 
-    &:hover, &:checked { background: yellow; }
+    &:hover, &:checked {
+      background: yellow;
+    }
 
     &:checked:before {
       content: "\2713";
@@ -56,17 +57,21 @@ $input-padding: .25em;
     }
   }
 
+  label input[type="checkbox"] {
+    display: inline-block;
+    margin-right: .5em;
+    vertical-align: middle;
+  }
+
   select {
     cursor: pointer;
   }
 
-  input[type="submit"],
-  &__control {
-    @extend .skrw__input;
+  input[type="submit"] {
+    @include prefix((appearance: none), webkit moz o);
+    display: inline-block;
+    background: none;
+    width: auto;
     @extend .skrw-control;
-    @include type-setting(1.25);
-    margin: $line-height 0;
-
-    &:hover { background: yellow; }
   }
 }

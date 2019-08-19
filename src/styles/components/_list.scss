@@ -1,11 +1,12 @@
 .skrw-list {
-  padding: 0;
   list-style-type: none;
+  padding: 0;
 
-  li, .skrw-list__item {
+  li {
     position: relative;
-    padding-left: .75em;
-    margin-bottom: 0;
+    padding-left: $line-height;
+    margin-bottom: $line-height;
+    @include clearfix;
 
     &:before {
       content: "*";
@@ -14,34 +15,19 @@
       left: 0;
     }
 
-    &:after {
-      content: "--------";
-    }
-
-    p:last-of-type {
-      margin-bottom: 0;
+    img, video {
+      float: left;
+      margin-right: $unit;
     }
   }
 
-  &--lines li {
-    position: relative;
+  &--grid {
+    @extend .skrw-grid;
 
-    &:after {
-      content: "";
-      position: absolute;
-      bottom: -.5 * $line-height;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: $font-color;
+    li {
+      @extend .skrw-grid__col--m-6;
+      @extend .skrw-grid__col--l-4;
+      @extend .skrw-grid__col--12;
     }
-
-    &:last-child:after {
-      display: none;
-    }
-  }
-
-  &[data-controller="skrw-sortable"] li {
-    cursor: move;
   }
 }

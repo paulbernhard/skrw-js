@@ -1,6 +1,5 @@
 .skrw-controls {
   @include bracket("(", ")");
-  @extend .skrw-inline;
 
   > * {
     @extend .skrw-control;
@@ -8,15 +7,17 @@
 }
 
 .skrw-control {
-  
-  color: $control-color;
+  font-size: $font-size;
+  line-height: $line-height;
+  color: $link-color;
   text-decoration: none;
-  padding: .05em .15em;
+  border: 1px solid $font-color;
+  padding: .05em .2em;
 
-  &:visited { color: $control-color; }
+  &:visited { color: $link-color; }
 
   &:hover {
     cursor: pointer;
-    color: $control-hover-color;
+    color: $link-hover-color;
   }
 }

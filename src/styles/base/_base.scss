@@ -1,5 +1,6 @@
 .skrw {
   box-sizing: border-box;
+  background: lightgrey;
 
   *, *:before, *:after {
     box-sizing: inherit;
@@ -7,15 +8,12 @@
 }
 
 .skrw-page {
+  min-height: 100vh;
   padding: $unit (3 * $unit);
 }
 
-.skrw-inline {
-  > * {
-    display: inline;
-    vertical-align: top;
-    margin-right: 3 * $unit;
-
-    &:last-child { margin-right: 0; }
-  }
+.skrw-stretch {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
 }

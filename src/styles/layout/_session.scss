@@ -1,53 +1,78 @@
+$hover-height: 42px;
+
 .skrw-session {
-  @extend .skrw;
   position: fixed;
   z-index: 999;
-  bottom: 0;
+  top: 100%;
   left: 0;
   width: 100%;
   max-height: 80vh;
-  padding: $unit;
-  border-top: 1px solid $font-color;
-  background: $control-color;
+  background: yellow;
+  transition: transform .15s;
 
-  &--min {
-    @include prefix((transform: translateY(100%)));
-    .skrw-session__btn:before { content: "(•)" }
+  &--expanded {
+    @include prefix((transform: translateY(-100%)));
   }
 
-  &__btn {
-    position: absolute;
-    top: -1.5 * $line-height;
-    right: .25 * $line-height;
-    height: 1 * $line-height;
-    background: $control-color;
-    cursor: pointer;
-
-    &:hover { color: $link-hover-color; }
+  &--pinned {
+    @extend .skrw-session--expanded;
   }
 
-  &__btn:before { content: "(X)"; }
+  &:hover {
+    @extend .skrw-session--expanded;
+  }
 
-  &__user {
-    overflow: hidden;
-    text-overflow: ellipsis;
+  &__inner {
+    background: lightgrey;
+    padding: $unit (2 * $unit) (1.5 * $unit) (2 * $unit);
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
 
-    @include respond-to(mobile) {
-      margin-bottom: .5 * $line-height;
+  &__controls {
+    a {
+      display: block;
     }
+  }
+
+  &__handle {
+    position: absolute;
+    top: -$hover-height;
+    left: 0;
+    width: 2 * $hover-height;
+    height: $hover-height;
+
+    &:before {
+      content: "(^)";
+      display: block;
+      text-align: center;
+      font-size: 20px;
+      color: red;
+      cursor: pointer;
+    }
+  }
+
+  &--pinned .skrw-session__handle:before {
+    content: "(•)"
   }
 }
 
 .skrw-flashes {
-  @extend .skrw;
-  position: absolute;
+  position: fixed;
+  z-index: 9999;
   top: 0;
   left: 0;
   width: 100%;
-  padding: $unit 100px $unit $unit;
-  @include prefix((transform: translateY(-100%)));
+  padding: $unit;
 
-  > *:before { content: "! "; }
-  > .success { color: green; }
-  > .error { color: $error-color; }
+  > * {
+    text-align: right;
+
+    &.alert, &.error { color: red; }
+    &.notice, &.success { color: green; }
+
+    &:before {
+      content: "! ";
+    }
+  }
 }
