@@ -16,7 +16,7 @@
   }
 
   h1 {
-    @include type-setting(1.4);
+    @include type-setting(1.6);
     margin-bottom: .75 * $line-height;
 
     &:before {

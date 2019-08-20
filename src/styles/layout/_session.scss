@@ -57,13 +57,14 @@ $hover-height: 42px;
   }
 }
 
-.skrw-flashes {
-  position: fixed;
+.skrw-flash {
+  position: absolute;
   z-index: 9999;
   top: 0;
-  left: 0;
+  right: 0;
   width: 100%;
   padding: $unit;
+  @include prefix((transform: translateY(-100%)));
 
   > * {
     text-align: right;

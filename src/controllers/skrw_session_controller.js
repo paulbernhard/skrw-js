@@ -6,7 +6,7 @@ export default class extends Controller {
 
   connect() {
     if (this.hasFlashTarget) {
-      this.timeoutFlash()
+      this.flashTimeout()
     }
 
     document.addEventListener("ajax:success", (event) => {
@@ -20,28 +20,23 @@ export default class extends Controller {
 
   // display flash messages from ajax / json responses
   flash(event) {
+    window.clearTimeout(this.flashTimeoutId)
     const [response, status, xhr] = event.detail
-    console.log(response)
 
-    if ("flash" in response) {
-      console.log(response.flash)
+    if (typeof response === "object" && "flash" in response) {
       let html = ""
       Object.keys(response.flash).forEach(key => {
         html += `<div class="${key}">${response.flash[key]}</div>`
       })
       this.flashTarget.innerHTML = html
-      this.timeoutFlash()
+      this.flashTimeout()
     }
   }
 
   // hide flash after n seconds
-  timeoutFlash() {
-    const timer = setTimeout(() => {
+  flashTimeout() {
+    this.flashTimeoutId = setTimeout(() => {
       this.flashTarget.innerHTML = ""
-    }, 2200)
+    }, 4000)
   }
-
-  // get isExpanded() {
-  //   return this.element.classList.contains("skrw-session--expanded") ? true : false
-  // }
 }
