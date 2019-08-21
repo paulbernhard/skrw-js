@@ -31,3 +31,10 @@
     }
   }
 }
+
+*[data-controller="skrw-sortable"] {
+
+  & > * {
+    cursor: move;
+  }
+}

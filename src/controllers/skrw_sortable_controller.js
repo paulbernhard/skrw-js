@@ -42,6 +42,11 @@ export default class extends Controller {
         "X-CSRF-Token": csrf
       },
       body: JSON.stringify({ id: id, index: index })
+    }).then(response => {
+      return response.json()
+    }).then(json => {
+      const event = new CustomEvent("ajax:success", { detail: [json] })
+      document.dispatchEvent(event)
     })
   }
 }
