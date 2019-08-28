@@ -65,15 +65,11 @@ $input-padding: .15em;
   }
 
   input[type="submit"] {
+    @extend .skrw-control;
     @include prefix((appearance: none), webkit moz o);
     display: inline-block;
     background: none;
     width: auto;
-    @extend .skrw-control;
-  }
-
-  input[data-controller*="skrw-tags"] {
-    display: none;
   }
 }
 
@@ -87,7 +83,12 @@ $input-padding: .15em;
 }
 
 // tagify
+
 .skrw {
+
+  input[data-controller*="skrw-tags"] {
+    display: none;
+  }
 
   &.tagify,
   &.tagify__dropdown__item {
@@ -105,6 +106,33 @@ $input-padding: .15em;
     &:hover:not([readonly]) > div:before {
       box-shadow: none;
       border: 1px solid black;
+    }
+  }
+}
+
+// form instructions
+
+.skrw .instructions {
+  font-size: 16px;
+  line-height: $line-height;
+  margin-bottom: .5 * $line-height;
+
+  &--markdown {
+
+    &:before {
+      content: "(+)"
+    }
+
+    pre {
+      display: none;
+      background: white;
+      padding: $unit;
+      white-space: pre-wrap;
+    }
+
+    &--expanded {
+      &:before { content: "(-)" }
+      pre { display: block; }
     }
   }
 }

@@ -32,7 +32,7 @@
   }
 
   h3 {
-    @include type-setting(1.2);
+    @include type-setting(1);
     text-transform: uppercase;
   }
 
@@ -45,7 +45,7 @@
     font-style: italic;
   }
 
-  strong {
+  strong, .strong {
     font-weight: bold;
   }
 
@@ -58,6 +58,22 @@
     border: none;
     border-bottom: 1px solid $font-color;
     margin: $line-height 0;
+  }
+
+  a, .skrw-link {
+    color: $link-color;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:visited {
+      color: $link-color;
+      text-decoration: underline;
+    }
+
+    &:hover {
+      color: $font-color;
+      text-decoration: none;
+    }
   }
 }
 

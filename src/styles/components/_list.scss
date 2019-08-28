@@ -1,10 +1,11 @@
 .skrw-list {
   list-style-type: none;
   padding: 0;
+  margin-bottom: $line-height;
 
   li {
     position: relative;
-    padding-left: $line-height;
+    padding-left: .75 * $line-height;
     margin-bottom: $line-height;
     @include clearfix;
 
@@ -28,6 +29,17 @@
       @extend .skrw-grid__col--m-6;
       @extend .skrw-grid__col--l-4;
       @extend .skrw-grid__col--12;
+    }
+  }
+
+  &--inline {
+    display: flex;
+    flex-flow: row wrap;
+
+    li {
+      display: inline-block;
+      margin-right: $unit;
+      margin-bottom: 0;
     }
   }
 }

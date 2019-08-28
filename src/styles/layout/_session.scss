@@ -35,7 +35,7 @@ $hover-height: 42px;
   //   }
   // }
 
-  &__handle {
+  & &__handle {
     position: absolute;
     top: -$hover-height;
     left: 0;
@@ -63,7 +63,7 @@ $hover-height: 42px;
   top: 0;
   right: 0;
   width: 100%;
-  padding: $unit;
+  // padding: $unit;
   @include prefix((transform: translateY(-100%)));
 
   > * {

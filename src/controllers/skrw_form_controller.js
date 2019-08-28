@@ -5,7 +5,7 @@ import "flatpickr/dist/flatpickr.css"
 
 export default class extends Controller {
 
-  static targets = ["datetime"]
+  static targets = ["datetime", "markdown"]
 
   connect() {
     // init autosize for textareas
@@ -44,5 +44,10 @@ export default class extends Controller {
       altInput: true,
       time_24hr: true
     })
+  }
+
+  toggleMarkdown(event) {
+    const markdown = event.target.closest("[data-target*='skrw-form.markdown']")
+    markdown.classList.toggle("instructions--markdown--expanded")
   }
 }
