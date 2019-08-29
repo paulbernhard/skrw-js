@@ -8,10 +8,11 @@ export default class extends Controller {
   static targets = ["datetime", "markdown"]
 
   connect() {
+    console.log("wtf!!!!!!")
     // init autosize for textareas
-    const textareas = this.element.querySelectorAll("textarea")
-    if (textareas.length > 0) {
-      textareas.forEach(textarea => {
+    this.textareas = this.element.querySelectorAll("textarea")
+    if (this.textareas.length > 0) {
+      this.textareas.forEach(textarea => {
         this.initAutosize(textarea)
       })
     }
