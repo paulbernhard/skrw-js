@@ -8,7 +8,6 @@ export default class extends Controller {
   static targets = ["datetime", "markdown"]
 
   connect() {
-    console.log("wtf!!!!!!")
     // init autosize for textareas
     this.textareas = this.element.querySelectorAll("textarea")
     if (this.textareas.length > 0) {
@@ -39,7 +38,6 @@ export default class extends Controller {
   }
 
   initDatetime(element) {
-    console.log("init datetime", element)
     flatpickr(element, {
       enableTime: true,
       altInput: true,

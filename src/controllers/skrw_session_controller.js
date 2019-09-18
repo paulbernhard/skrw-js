@@ -9,9 +9,23 @@ export default class extends Controller {
       this.flashTimeout()
     }
 
-    document.addEventListener("ajax:success", (event) => {
+    document.body.addEventListener("ajax:success", (event) => {
+      console.log(event)
       this.flash(event)
     })
+
+    document.body.addEventListener("ajax:error", (event) => {
+      console.log(event)
+      this.flash(event)
+    })
+
+    document.body.addEventListener("ajax:complete", (event) => {
+      console.log(event)
+    })
+
+    if (this.hasFlashTarget) {
+      this.flashTimeout()
+    }
   }
 
   toggle() {

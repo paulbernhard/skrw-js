@@ -7,13 +7,14 @@
 //
 //  Properties:
 //    data-skrw-response-target-element="#selector" => target element to be used with updateTarget()
+//    data-skrw-response-update-url="items/index"   => url to fetch when update is triggered
 //
 //  Actions:
-//    reload()       => reloads the closest skrw-response.item with response.html
-//    remove()       => removes teh closest skrw-response.item
+//    reload()       => replaces the innerHTML of closest skrw-response.item with response.html
+//    remove()       => removes the closest skrw-response.item
 //    update()       => updates this.element with a response from data-skrw-response-update-url
 //    updateTarget() => triggers update() at targetElement
-//    reset()        => restores the state when the controller was connected
+//    reset()        => reset innerHTML of skrw-response controller to initial state
 //
 //  Markup for a form that updates a list. The <div> listens to ajax events emitted from the <form>.
 //  On ajax:success the <ul> is updated, on ajax:error the <div> is reloaded with the ajax response.
@@ -42,6 +43,7 @@ export default class extends Controller {
   connect() {
     // listener for "update" event on this.element
     this.element.addEventListener("update", (event) => {
+      console.log(event)
       this.update()
     })
 
@@ -51,7 +53,8 @@ export default class extends Controller {
   }
 
   reload(event) {
-    event.stopPropagation()
+    console.log(event)
+    // event.stopPropagation()
     const [response, status, xhr] = event.detail
     const target = event.target.closest("[data-target*='skrw-response.item']")
     if (document.body.contains(target)) {
@@ -75,8 +78,9 @@ export default class extends Controller {
   }
 
   update(event) {
+    console.log("update")
     const url = this.data.get("updateUrl")
-    console.log("fetch update from", url)
+
     if (url) {
       fetch(url, {
         method: "GET",
@@ -86,7 +90,6 @@ export default class extends Controller {
         }
       }).then(response => { return response.json() })
         .then(json => {
-          console.log("update", this.element, json)
           this.element.innerHTML = json.html
         })
     }
@@ -95,7 +98,7 @@ export default class extends Controller {
   updateTarget() {
     const target = this.targetElement
     if (target) {
-      const update = new Event("update")
+      const update = new CustomEvent("update")
       this.targetElement.dispatchEvent(update)
     }
   }
@@ -106,7 +109,7 @@ export default class extends Controller {
   // if no target is set, it will default to this.element
   get targetElement() {
     const selector = this.data.get("targetElement")
-    console.log("selector is", selector)
+
     if (selector) {
       // test if selector is id or querySelector
       if (/^#.+/.test(selector)) {
@@ -117,9 +120,5 @@ export default class extends Controller {
     } else {
       return this.element
     }
-  }
-
-  get updateTargetElement() {
-    return this.data.get("updateTargetElement") == "true" ? true : false
   }
 }

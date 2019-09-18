@@ -1,7 +1,6 @@
-$grid-prefix: "skrw-grid";
 $grid-column-count: 12;
 
-.#{$grid-prefix} {
+.skrw-grid {
   display: grid;
   grid-template-columns: repeat($grid-column-count, 1fr);
   grid-column-gap: $gutter;
@@ -17,37 +16,37 @@ $grid-column-count: 12;
   &--align-center { align-items: center; }
   &--align-end { align-items: end; }
   &--align-stretch { align-items: stretch; }
+}
 
-  &__col {
+.skrw-col {
 
-    &--justify-stretch { justify-self: stretch; }
-    &--justify-start { justify-self: start; }
-    &--justify-center { justify-self: center; }
-    &--justify-end { justify-self: end; }
-  }
+  &--justify-stretch { justify-self: stretch; }
+  &--justify-start { justify-self: start; }
+  &--justify-center { justify-self: center; }
+  &--justify-end { justify-self: end; }
 }
 
 // set base column classes
 @for $i from 1 through $grid-column-count {
-  .#{$grid-prefix}__col--#{$i} { grid-column-end: span $i; }
+  .skrw-col--#{$i} { grid-column-end: span $i; }
 }
 
 // set responsive column classes
 @for $i from 1 through $grid-column-count {
 
   @include respond-to(mobile) {
-    .#{$grid-prefix}__col--xs-#{$i} { grid-column-end: span $i; }
+    .skrw-col--xs-#{$i} { grid-column-end: span $i; }
   }
 
   @include respond-to(small) {
-    .#{$grid-prefix}__col--s-#{$i} { grid-column-end: span $i; }
+    .skrw-col--s-#{$i} { grid-column-end: span $i; }
   }
 
   @include respond-to(medium) {
-    .#{$grid-prefix}__col--m-#{$i} { grid-column-end: span $i; }
+    .skrw-col--m-#{$i} { grid-column-end: span $i; }
   }
 
   @include respond-to(large) {
-    .#{$grid-prefix}__col--l-#{$i} { grid-column-end: span $i; }
+    .skrw-col--l-#{$i} { grid-column-end: span $i; }
   }
 }

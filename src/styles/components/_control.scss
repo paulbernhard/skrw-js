@@ -1,5 +1,7 @@
 .skrw-controls {
   @include bracket("(", ")");
+  margin-top: .5 * $line-height;
+  margin-bottom: .5 * $line-height;
 
   > * {
     @extend .skrw-control;
@@ -15,7 +17,10 @@
   border: 1px solid $font-color;
   padding: .05em .2em;
 
-  &:visited { color: $link-color; }
+  &:visited {
+    color: $link-color;
+    text-decoration: none;
+  }
 
   &:hover {
     cursor: pointer;

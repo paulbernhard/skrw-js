@@ -30,8 +30,6 @@ export default class extends Controller {
       this.tagify
         .on("add", (e) => { this.formatInput() })
         .on("remove", (e) => { this.formatInput() })
-
-      console.log(this.tagify.settings)
     })
   }
 

@@ -6,23 +6,35 @@ $input-padding: .15em;
   line-height: $line-height;
   margin-bottom: .5 * $line-height;
 
+  .skrw-field {
+    margin-bottom: .5 * $line-height;
+
+    &--erroneous {
+      label {
+        @extend .skrw-text--error;
+      }
+
+      input:not([type="submit"]), textarea, select {
+        border-color: $error-color;
+      }
+    }
+  }
+
   label, input, textarea, select {
     display: block;
     width: 100%;
   }
 
   label {
-    margin-top: .5 * $line-height;
     margin-bottom: .15 * $line-height;
 
-    &:first-of-type {
-      margin-top: 0;
+    &.skrw-label--erroneous {
+      @extend .skrw-text--error;
     }
   }
 
   input:not([type="submit"]), textarea, select {
-    @extend .skrw-form__input;
-    margin-bottom: .5 * $line-height;
+    @extend .skrw-form-input;
   }
 
   textarea {
@@ -73,7 +85,7 @@ $input-padding: .15em;
   }
 }
 
-.skrw-form__input {
+.skrw-form-input {
   font-family: $font-family;
   font-size: $font-size;
   line-height: $line-height;
@@ -92,7 +104,7 @@ $input-padding: .15em;
 
   &.tagify,
   &.tagify__dropdown__item {
-    @extend .skrw-form__input;
+    @extend .skrw-form-input;
   }
 
   .tagify {

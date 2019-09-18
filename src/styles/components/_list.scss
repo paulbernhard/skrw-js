@@ -26,9 +26,9 @@
     @extend .skrw-grid;
 
     li {
-      @extend .skrw-grid__col--m-6;
-      @extend .skrw-grid__col--l-4;
-      @extend .skrw-grid__col--12;
+      @extend .skrw-col--m-6;
+      @extend .skrw-col--l-4;
+      @extend .skrw-col--12;
     }
   }
 
@@ -44,7 +44,7 @@
   }
 }
 
-*[data-controller="skrw-sortable"] {
+*[data-controller*="skrw-sortable"] {
 
   & > * {
     cursor: move;

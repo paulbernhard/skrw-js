@@ -62,12 +62,12 @@
 
   a, .skrw-link {
     color: $link-color;
-    text-decoration: underline;
+    text-decoration: none;
     cursor: pointer;
 
     &:visited {
       color: $link-color;
-      text-decoration: underline;
+      text-decoration: none;
     }
 
     &:hover {
@@ -83,6 +83,14 @@
   &--right  { text-align: right; };
 }
 
-.skrw-error {
+.skrw-errors {
+  @extend .skrw-text--error;
+
+  > *:before {
+    content: "- ";
+  }
+}
+
+.skrw-text--error {
   color: red;
 }

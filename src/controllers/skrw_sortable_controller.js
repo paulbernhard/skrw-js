@@ -1,4 +1,6 @@
 // controller for sortable containers
+// lets user sort items with drag and drop, executing a POST
+// request after each change submitting id and new index position
 //
 // markup:
 //   <ul data-controller="skrw-sortable" data-skrw-sortable-url="/items/sort">
@@ -7,7 +9,8 @@
 //    …
 //  </ul>
 //
-// data-skrw-sortable-url="/items/sort" => url to POST after each dragging
+// data-skrw-sortable-url="/items/sort" (mandatory) => url to POST after each dragging
+// data-id="1" (mandatory) => will be passed in request params along with new sorting position
 
 import { Controller } from "stimulus"
 import Sortable from "sortablejs"
@@ -30,6 +33,8 @@ export default class extends Controller {
 
   // post new position to url
   dragEndHandler(event) {
+    console.log(event)
+
     const id = event.item.dataset.id
     const index = event.newIndex
     const url = this.data.get("url")
@@ -45,8 +50,8 @@ export default class extends Controller {
     }).then(response => {
       return response.json()
     }).then(json => {
-      const event = new CustomEvent("ajax:success", { detail: [json] })
-      document.dispatchEvent(event)
+      // const event = new CustomEvent("ajax:success", { detail: [json] })
+      // document.dispatchEvent(event)
     })
   }
 }
