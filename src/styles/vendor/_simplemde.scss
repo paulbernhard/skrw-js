@@ -1,0 +1,16 @@
+.skrw {
+
+  .CodeMirror, .CodeMirror-scroll {
+    min-height: 0;
+  }
+
+  .CodeMirror {
+    @extend .skrw-form-input;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .skrw-field--erroneous .CodeMirror {
+    border: 1px solid $error-color;
+  }
+}

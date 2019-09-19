@@ -1,5 +1,4 @@
 $hover-height: 42px;
-$flash-width: 300px;
 
 .skrw-session {
   position: fixed;
@@ -11,6 +10,8 @@ $flash-width: 300px;
   padding-left: $hover-height;
   background: none;
   transition: transform .15s;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 
   @include respond-to(mobile) {
     top: 100vh;
@@ -32,10 +33,6 @@ $flash-width: 300px;
 
   &--pinned {
     @extend .skrw-session--expanded;
-  }
-
-  &:hover {
-    // @extend .skrw-session--expanded;
   }
 
   &__inner {
@@ -60,22 +57,21 @@ $flash-width: 300px;
     }
 
     &:before {
-      content: "(<)";
+      content: "(•)";
       display: inline-block;
       text-align: center;
       font-size: .5 * $hover-height;
       padding: (.25 * $hover-height) (.15 * $hover-height);
       color: red;
       cursor: pointer;
+    }
+
+    &:hover:before {
+      content: "(<)";
 
       @include respond-to(mobile) {
         content: "(^)"
       }
-    }
-
-    &:hover:before {
-      // color: $link-hover-color;
-      content: "(•)";
     }
   }
 
@@ -93,21 +89,16 @@ $flash-width: 300px;
 }
 
 .skrw-flash {
-  position: absolute;
-  z-index: 9999;
-  top: 0;
-  left: -$flash-width - $hover-height;
-  width: $flash-width;
-  padding: (.25 * $line-height) 0 ;
+  position: fixed;
+  z-index: 999;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: $unit;
   pointer-events: none;
-
-  @include respond-to(mobile) {
-    left: 0;
-    max-width: 80vw;
-  }
+  @include type(1.25);
 
   > * {
-    text-align: right;
 
     &.alert, &.error { color: red; }
     &.notice, &.success { color: green; }

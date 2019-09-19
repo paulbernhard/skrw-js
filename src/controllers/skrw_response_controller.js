@@ -43,7 +43,6 @@ export default class extends Controller {
   connect() {
     // listener for "update" event on this.element
     this.element.addEventListener("update", (event) => {
-      console.log(event)
       this.update()
     })
 
@@ -53,7 +52,6 @@ export default class extends Controller {
   }
 
   reload(event) {
-    console.log(event)
     // event.stopPropagation()
     const [response, status, xhr] = event.detail
     const target = event.target.closest("[data-target*='skrw-response.item']")
@@ -78,7 +76,6 @@ export default class extends Controller {
   }
 
   update(event) {
-    console.log("update")
     const url = this.data.get("updateUrl")
 
     if (url) {

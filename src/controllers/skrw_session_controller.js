@@ -2,55 +2,49 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
 
-  static targets = ["flash"]
-
-  connect() {
-    if (this.hasFlashTarget) {
-      this.flashTimeout()
-    }
-
-    document.body.addEventListener("ajax:success", (event) => {
-      console.log(event)
-      this.flash(event)
-    })
-
-    document.body.addEventListener("ajax:error", (event) => {
-      console.log(event)
-      this.flash(event)
-    })
-
-    document.body.addEventListener("ajax:complete", (event) => {
-      console.log(event)
-    })
-
-    if (this.hasFlashTarget) {
-      this.flashTimeout()
-    }
+  initialize() {
+    this.pinned = this.pinned
   }
 
   toggle() {
-    this.element.classList.toggle("skrw-session--pinned")
+    this.pinned = !this.pinned
   }
 
   // display flash messages from ajax / json responses
-  flash(event) {
-    window.clearTimeout(this.flashTimeoutId)
-    const [response, status, xhr] = event.detail
+  // flash(event) {
+  //   window.clearTimeout(this.flashTimeoutId)
+  //   const [response, status, xhr] = event.detail
+  //
+  //   if (typeof response === "object" && "flash" in response) {
+  //     let html = ""
+  //     Object.keys(response.flash).forEach(key => {
+  //       html += `<div class="${key}">${response.flash[key]}</div>`
+  //     })
+  //     this.flashTarget.innerHTML = html
+  //     this.flashTimeout()
+  //   }
+  // }
+  //
+  // // hide flash after n seconds
+  // flashTimeout() {
+  //   this.flashTimeoutId = setTimeout(() => {
+  //     this.flashTarget.innerHTML = ""
+  //   }, 4000)
+  // }
 
-    if (typeof response === "object" && "flash" in response) {
-      let html = ""
-      Object.keys(response.flash).forEach(key => {
-        html += `<div class="${key}">${response.flash[key]}</div>`
-      })
-      this.flashTarget.innerHTML = html
-      this.flashTimeout()
-    }
+  get pinned() {
+    return this.data.get("pinned") == "true" ? true : false
   }
 
-  // hide flash after n seconds
-  flashTimeout() {
-    this.flashTimeoutId = setTimeout(() => {
-      this.flashTarget.innerHTML = ""
-    }, 4000)
+  set pinned(boolean) {
+    this.data.set("pinned", boolean)
+
+    const className = "skrw-session--pinned"
+
+    if (this.pinned) {
+      this.element.classList.add(className)
+    } else {
+      this.element.classList.remove(className)
+    }
   }
 }

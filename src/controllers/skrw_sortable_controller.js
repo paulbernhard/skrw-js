@@ -33,8 +33,6 @@ export default class extends Controller {
 
   // post new position to url
   dragEndHandler(event) {
-    console.log(event)
-
     const id = event.item.dataset.id
     const index = event.newIndex
     const url = this.data.get("url")

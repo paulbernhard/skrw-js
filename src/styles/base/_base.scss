@@ -1,6 +1,5 @@
 .skrw {
   box-sizing: border-box;
-  background: lightgrey;
 
   *, *:before, *:after {
     box-sizing: inherit;
@@ -10,6 +9,7 @@
 .skrw-page {
   min-height: 100vh;
   padding: $unit (3 * $unit);
+  background: lightgrey;
 }
 
 .skrw-stretch {

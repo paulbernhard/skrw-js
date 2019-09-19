@@ -16,7 +16,7 @@
   }
 
   h1 {
-    @include type-setting(1.6);
+    @include type(1.6);
     margin-bottom: .75 * $line-height;
 
     &:before {
@@ -25,14 +25,14 @@
   }
 
   h2 {
-    @include type-setting(1);
+    @include type(1);
     text-align: center;
     text-transform: uppercase;
     margin: $line-height 0;
   }
 
   h3 {
-    @include type-setting(1);
+    @include type(1);
     text-transform: uppercase;
   }
 
@@ -50,7 +50,7 @@
   }
 
   small {
-    @include type-setting(.8);
+    @include type(.8);
   }
 
   hr {

@@ -34,7 +34,7 @@
 }
 
 // mixin for type setting
-@mixin type-setting($factor, $line-height-factor: 1) {
+@mixin type($factor, $line-height-factor: 1) {
   font-size: $factor * $font-size;
   line-height: $line-height-factor * $line-height;
 }

@@ -64,4 +64,13 @@
   & > * {
     cursor: move;
   }
+
+  li {
+
+    &:before {
+      content: "•";
+      font-size: 1.5em;
+      white-space: pre;
+    }
+  }
 }

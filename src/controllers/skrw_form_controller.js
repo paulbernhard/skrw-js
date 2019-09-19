@@ -13,13 +13,6 @@ export default class extends Controller {
     })
   }
 
-  disconnect() {
-    // destroy autosize for textareas
-    if (this.textareas.length > 0) {
-      autosize.destroy(this.textareas)
-    }
-  }
-
   initDatetime(element) {
     flatpickr(element, {
       enableTime: true,

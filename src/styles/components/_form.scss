@@ -94,32 +94,8 @@ $input-padding: .15em;
   padding: $input-padding;
 }
 
-// tagify
-
-.skrw {
-
-  input[data-controller*="skrw-tags"] {
-    display: none;
-  }
-
-  &.tagify,
-  &.tagify__dropdown__item {
-    @extend .skrw-form-input;
-  }
-
-  .tagify {
-    align-items: first baseline;
-  }
-
-  .tagify__tag {
-    margin: (.1 * $unit) $unit;
-
-    > div:before,
-    &:hover:not([readonly]) > div:before {
-      box-shadow: none;
-      border: 1px solid black;
-    }
-  }
+.skrw-form-errors {
+  @extend .skrw-text--error;
 }
 
 // form instructions
