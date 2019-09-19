@@ -1,16 +1,33 @@
 $hover-height: 42px;
+$flash-width: 300px;
 
 .skrw-session {
   position: fixed;
   z-index: 999;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  max-height: 80vh;
+  top: 0;
+  right: -375px;
+  width: 375px + $hover-height;
+  height: 100%;
+  padding-left: $hover-height;
+  background: none;
   transition: transform .15s;
 
+  @include respond-to(mobile) {
+    top: 100vh;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    padding-left: 0;
+    padding-top: $hover-height;
+    @include prefix((transform: translate(0, -$hover-height)));
+  }
+
   &--expanded {
-    @include prefix((transform: translateY(-100%)));
+    @include prefix((transform: translate(-375px, 0)));
+
+    @include respond-to(mobile) {
+      @include prefix((transform: translate(0, -100%)));
+    }
   }
 
   &--pinned {
@@ -18,41 +35,60 @@ $hover-height: 42px;
   }
 
   &:hover {
-    @extend .skrw-session--expanded;
+    // @extend .skrw-session--expanded;
   }
 
   &__inner {
-    background: lightgrey;
+    width: 100%;
+    min-height: 100%;
+    background: white;
     padding: $unit (2 * $unit) (1.5 * $unit) (2 * $unit);
     overflow-x: hidden;
     overflow-y: auto;
   }
 
-  // &__controls {
-  //   a {
-  //     display: block;
-  //   }
-  // }
-
   & &__handle {
     position: absolute;
-    top: -$hover-height;
+    top: 0;
     left: 0;
-    width: 2 * $hover-height;
-    height: $hover-height;
+    width: 1 * $hover-height;
+    height: 1 * $hover-height;
+
+    @include respond-to(mobile) {
+      left: auto;
+      right: 0;
+    }
 
     &:before {
-      content: "(^)";
-      display: block;
+      content: "(<)";
+      display: inline-block;
       text-align: center;
-      font-size: 20px;
+      font-size: .5 * $hover-height;
+      padding: (.25 * $hover-height) (.15 * $hover-height);
       color: red;
       cursor: pointer;
+
+      @include respond-to(mobile) {
+        content: "(^)"
+      }
+    }
+
+    &:hover:before {
+      // color: $link-hover-color;
+      content: "(•)";
     }
   }
 
   &--pinned .skrw-session__handle:before {
-    content: "(•)"
+    content: "(•)";
+  }
+
+  &--pinned .skrw-session__handle:hover:before {
+    content: "(>)";
+
+    @include respond-to(mobile) {
+      content: "(v)"
+    }
   }
 }
 
@@ -60,10 +96,15 @@ $hover-height: 42px;
   position: absolute;
   z-index: 9999;
   top: 0;
-  right: 0;
-  width: 100%;
-  // padding: $unit;
-  @include prefix((transform: translateY(-100%)));
+  left: -$flash-width - $hover-height;
+  width: $flash-width;
+  padding: (.25 * $line-height) 0 ;
+  pointer-events: none;
+
+  @include respond-to(mobile) {
+    left: 0;
+    max-width: 80vw;
+  }
 
   > * {
     text-align: right;

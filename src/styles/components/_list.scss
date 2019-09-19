@@ -18,7 +18,17 @@
 
     img, video {
       float: left;
+      max-width: 40%;
       margin-right: $unit;
+
+      @include respond-to(mobile) {
+        float: none;
+        margin-right: 0;
+      }
+    }
+
+    p {
+      margin-bottom: 0;
     }
   }
 
@@ -26,8 +36,9 @@
     @extend .skrw-grid;
 
     li {
-      @extend .skrw-col--m-6;
-      @extend .skrw-col--l-4;
+      @extend .skrw-col--m-4;
+      @extend .skrw-col--s-6;
+      @extend .skrw-col--l-3;
       @extend .skrw-col--12;
     }
   }
@@ -41,6 +52,10 @@
       margin-right: $unit;
       margin-bottom: 0;
     }
+  }
+
+  &--tight li {
+    margin-bottom: 0;
   }
 }
 

@@ -16,8 +16,8 @@
   },
   "dependencies": {
     "@yaireo/tagify": "^2.23.1",
-    "autosize": "^4.0.2",
     "flatpickr": "^4.6.2",
+    "simplemde": "^1.11.2",
     "sortablejs": "^1.10.0-rc3"
   },
   "devDependencies": {

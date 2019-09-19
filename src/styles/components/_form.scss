@@ -42,6 +42,12 @@ $input-padding: .15em;
     resize: vertical;
   }
 
+  label input[type="checkbox"] {
+    display: inline-block;
+    margin-right: .5em;
+    vertical-align: middle;
+  }
+
   input[type="checkbox"] {
     @include prefix((appearance: none), webkit moz o);
     display: block;
@@ -66,22 +72,16 @@ $input-padding: .15em;
     }
   }
 
-  label input[type="checkbox"] {
-    display: inline-block;
-    margin-right: .5em;
-    vertical-align: middle;
-  }
-
-  select {
-    cursor: pointer;
-  }
-
   input[type="submit"] {
     @extend .skrw-control;
     @include prefix((appearance: none), webkit moz o);
     display: inline-block;
     background: none;
     width: auto;
+  }
+
+  select {
+    cursor: pointer;
   }
 }
 
