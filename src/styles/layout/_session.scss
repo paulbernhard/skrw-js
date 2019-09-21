@@ -1,17 +1,17 @@
-$hover-height: 42px;
+$hover-width: 42px;
+$session-width: 350px;
 
 .skrw-session {
   position: fixed;
   z-index: 999;
   top: 0;
-  right: -375px;
-  width: 375px + $hover-height;
+  right: -$session-width + $hover-width;
+  width: $session-width;
+  padding-left: $hover-width;
   height: 100%;
-  padding-left: $hover-height;
   background: none;
   transition: transform .15s;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow-y: hidden;
 
   @include respond-to(mobile) {
     top: 100vh;
@@ -19,37 +19,33 @@ $hover-height: 42px;
     width: 100%;
     height: 100vh;
     padding-left: 0;
-    padding-top: $hover-height;
-    @include prefix((transform: translate(0, -$hover-height)));
+    padding-top: $hover-width;
+    @include prefix((transform: translate(0, -$hover-width)));
   }
 
-  &--expanded {
-    @include prefix((transform: translate(-375px, 0)));
+  &--pinned {
+    @include prefix((transform: translate(-$session-width + $hover-width, 0)));
 
     @include respond-to(mobile) {
       @include prefix((transform: translate(0, -100%)));
     }
   }
 
-  &--pinned {
-    @extend .skrw-session--expanded;
-  }
-
   &__inner {
     width: 100%;
-    min-height: 100%;
+    height: 100%;
     background: white;
     padding: $unit (2 * $unit) (1.5 * $unit) (2 * $unit);
-    overflow-x: hidden;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   & &__handle {
     position: absolute;
     top: 0;
     left: 0;
-    width: 1 * $hover-height;
-    height: 1 * $hover-height;
+    width: 1 * $hover-width;
+    height: 1 * $hover-width;
 
     @include respond-to(mobile) {
       left: auto;
@@ -60,8 +56,8 @@ $hover-height: 42px;
       content: "(•)";
       display: inline-block;
       text-align: center;
-      font-size: .5 * $hover-height;
-      padding: (.25 * $hover-height) (.15 * $hover-height);
+      font-size: .5 * $hover-width;
+      padding: (.25 * $hover-width) (.15 * $hover-width);
       color: red;
       cursor: pointer;
     }
@@ -97,6 +93,7 @@ $hover-height: 42px;
   padding: $unit;
   pointer-events: none;
   @include type(1.25);
+  text-align: right;
 
   > * {
 

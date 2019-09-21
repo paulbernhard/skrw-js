@@ -60,6 +60,7 @@ export default class extends Controller {
     if (this.whitelistUrl) {
       const data = await this.fetchWhitelist()
       options.whitelist = data
+      console.log(data)
     } else {
       options.whitelist = this.whitelist ? this.whitelist : []
     }

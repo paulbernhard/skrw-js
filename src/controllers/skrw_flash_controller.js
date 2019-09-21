@@ -37,6 +37,6 @@ export default class extends Controller {
   }
 
   get timeoutDelay() {
-    return 2000
+    return 5000
   }
 }

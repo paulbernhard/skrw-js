@@ -7,7 +7,13 @@ $input-padding: .15em;
   margin-bottom: .5 * $line-height;
 
   .skrw-field {
+    display: flex;
+    flex-flow: row wrap;
     margin-bottom: .5 * $line-height;
+
+    > * {
+      width: 100%;
+    }
 
     &--erroneous {
       label {
@@ -75,13 +81,25 @@ $input-padding: .15em;
   input[type="submit"] {
     @extend .skrw-control;
     @include prefix((appearance: none), webkit moz o);
-    display: inline-block;
+    display: block;
     background: none;
     width: auto;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   select {
     cursor: pointer;
+  }
+
+  .skrw-field select {
+    width: auto;
+    flex-grow: 1;
+    margin-right: $line-height;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
   }
 }
 
@@ -96,31 +114,22 @@ $input-padding: .15em;
 
 .skrw-form-errors {
   @extend .skrw-text--error;
+  margin-bottom: $line-height;
 }
 
-// form instructions
+.skrw-nested-fields {
+  margin-bottom: $line-height;
+  padding-left: $line-height;
 
-.skrw .instructions {
-  font-size: 16px;
-  line-height: $line-height;
-  margin-bottom: .5 * $line-height;
-
-  &--markdown {
+  > div {
+    position: relative;
+    margin-bottom: $line-height;
 
     &:before {
-      content: "(+)"
-    }
-
-    pre {
-      display: none;
-      background: white;
-      padding: $unit;
-      white-space: pre-wrap;
-    }
-
-    &--expanded {
-      &:before { content: "(-)" }
-      pre { display: block; }
+      content: "•";
+      position: absolute;
+      top: 0;
+      left: -$line-height;
     }
   }
 }

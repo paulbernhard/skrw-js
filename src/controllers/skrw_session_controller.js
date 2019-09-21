@@ -10,28 +10,6 @@ export default class extends Controller {
     this.pinned = !this.pinned
   }
 
-  // display flash messages from ajax / json responses
-  // flash(event) {
-  //   window.clearTimeout(this.flashTimeoutId)
-  //   const [response, status, xhr] = event.detail
-  //
-  //   if (typeof response === "object" && "flash" in response) {
-  //     let html = ""
-  //     Object.keys(response.flash).forEach(key => {
-  //       html += `<div class="${key}">${response.flash[key]}</div>`
-  //     })
-  //     this.flashTarget.innerHTML = html
-  //     this.flashTimeout()
-  //   }
-  // }
-  //
-  // // hide flash after n seconds
-  // flashTimeout() {
-  //   this.flashTimeoutId = setTimeout(() => {
-  //     this.flashTarget.innerHTML = ""
-  //   }, 4000)
-  // }
-
   get pinned() {
     return this.data.get("pinned") == "true" ? true : false
   }
