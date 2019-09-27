@@ -1,29 +1,34 @@
-.skrw-controls {
-  @include bracket("(", ")");
-  margin-top: .5 * $line-height;
-  margin-bottom: .5 * $line-height;
+.skrw {
 
-  > * {
-    @extend .skrw-control;
+  .skrw-controls {
+    @include bracket("(", ")");
+    margin-top: .5 * $line-height;
+    margin-bottom: .5 * $line-height;
+
+    > * {
+      @extend .skrw-control;
+    }
   }
-}
 
-.skrw-control {
-  font-size: $font-size;
-  line-height: $line-height;
-  color: $link-color;
-  text-decoration: none;
-  display: inline-block;
-  border: 1px solid $font-color;
-  padding: .05em .2em;
-
-  &:visited {
+  .skrw-control {
+    font-size: $font-size;
+    line-height: $line-height;
     color: $link-color;
     text-decoration: none;
-  }
+    display: inline-block;
+    border: none;
+    padding: 0;
+    text-decoration: underline;
 
-  &:hover {
-    cursor: pointer;
-    color: $link-hover-color;
+    &:visited {
+      color: $link-color;
+      text-decoration: underline;
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: $link-hover-color;
+      text-decoration: none;
+    }
   }
 }

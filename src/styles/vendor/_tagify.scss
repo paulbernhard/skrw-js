@@ -9,6 +9,10 @@
     @extend .skrw-form-input;
   }
 
+  &.tagify__dropdown__item--active {
+    background: $link-color;
+  }
+
   .tagify {
     align-items: first baseline;
   }

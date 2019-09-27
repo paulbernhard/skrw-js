@@ -82,6 +82,13 @@ $session-width: 350px;
       content: "(v)"
     }
   }
+
+  &__controls {
+
+    ul {
+      @extend .skrw-list, .skrw-list--tight;
+    }
+  }
 }
 
 .skrw-flash {
